@@ -1,0 +1,169 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 gap">
+			<p class="RegistrationHeading">New User Registration</p>
+			<hr class="re">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<!--New User Registration Form -->
+					<form name="createUserForm"
+						ng-submit="createUserForm.$valid && submitRegdForm(user)"
+						class="form-horizontal" role="form" novalidate>
+						<!-- FIRST NAME -->
+						<div class="form-group">
+							<label for="fisrtName" class="control-label col-sm-3">First
+								Name <em>*</em>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" ng-model="user.fName" name="fName" id="fName"
+									class="form-control" required />
+								<div ng-show="createUserForm.$submitted">
+									<small class="error"
+										ng-show="createUserForm.fName.$error.required"> First
+										name is required </small>
+								</div>
+							</div>
+						</div>
+						<!-- MIDDLE NAME -->
+						<div class="form-group">
+							<label for="middleName" class="control-label col-md-3">Middle
+								Name </label>
+							<div class="col-sm-9">
+								<input type="text" ng-model="user.mName" name="mName" id="mName"
+									class="form-control" />
+							</div>
+						</div>
+						<!-- LAST NAME -->
+						<div class="form-group">
+							<label for="lastName" class="control-label col-md-3">Last
+								Name <em>*</em>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" ng-model="user.lName" name="lName" id="lName"
+									class="form-control" required />
+								<div ng-show="createUserForm.$submitted">
+									<small class="error"
+										ng-show="createUserForm.lName.$error.required"> Last
+										name is required </small>
+								</div>
+							</div>
+						</div>
+						<!-- USER NAME -->
+						<div class="form-group">
+							<label for="userName" class="control-label col-md-3">User
+								Name <em>*</em>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" ng-model="user.uName" name="uName" id="uName"
+									class="form-control" required />
+								<div ng-show="createUserForm.$submitted">
+									<small class="error"
+										ng-show="createUserForm.uName.$error.required"> User
+										name is required </small>
+								</div>
+							</div>
+						</div>
+						<!-- EMAIL -->
+						<div class="form-group">
+							<label for="Email" class="control-label col-md-3">Email <em>*</em></label>
+							<div class="col-sm-9">
+								<input type="email" ng-model="user.uEmail" name="uEmail"
+									id="uEmail" class="form-control" required />
+								<div ng-show="createUserForm.$submitted">
+									<small class="error"
+										ng-show="createUserForm.uEmail.$error.required"> Email
+										is required </small> <small class="error"
+										ng-show="createUserForm.uEmail.$error.email"> Enter a
+										valid email </small>
+								</div>
+							</div>
+						</div>
+						<!-- MOBILE NUMBER -->
+						<div class="form-group">
+							<label for="Mobile" class="control-label col-md-3">Phone
+								<em>*</em>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" ng-model="user.mobile" name="mobile"
+									id="mobile" class="form-control" required />
+								<div ng-show="createUserForm.$submitted">
+									<small class="error"
+										ng-show="createUserForm.mobile.$error.required">
+										Phone number is required </small>
+								</div>
+							</div>
+						</div>
+						<!-- COMPANY -->
+						<div class="form-group">
+							<label for="Company" class="control-label col-md-3">Company
+							</label>
+							<div class="col-sm-9">
+								<input type="text" ng-model="user.company" name="company"
+									id="company" class="form-control" />
+							</div>
+						</div>
+						<!-- DIVISIONS -->
+						<div class="form-group">
+							<label for="divisions" class="control-label col-md-3">Division(s)
+								<em>*</em>
+							</label>
+							<div class="col-sm-9">
+								<select class="form-control" id="userDivision"
+									name="userDivision" ng-model="user.userDivision" required>
+									<option value="">-- Select Division(s) --</option>
+									<option value="dme-eu">DME-EU</option>
+									<option value="dme-na">DME-NA</option>
+									<option value="hot-runner">HOT RUNNER</option>
+
+								</select>
+								<div ng-show="createUserForm.$submitted">
+									<small class="error"
+										ng-show="createUserForm.userDivision.$error.required">
+										Division is required </small>
+								</div>
+							</div>
+						</div>
+						<!-- LANGUAGE -->
+						<div class="form-group">
+							<label for="divisions" class="control-label col-md-3">Language
+								<em>*</em>
+							</label>
+							<div class="col-sm-9">
+								<select class="form-control" id="userLanguage"
+									name="userDivision" ng-model="user.userLanguage" required>
+									<option value="">-- Select language --</option>
+									<option value="arabic">Arabic</option>
+									<option value="chinese">Chinese</option>
+									<option value="english">English</option>
+									<option value="spanish">Spanish</option>
+								</select>
+								<div ng-show="createUserForm.$submitted">
+									<small class="error"
+										ng-show="createUserForm.userLanguage.$error.required">
+										Language is required </small>
+								</div>
+							</div>
+						</div>
+						<!-- NOTES -->
+						<div class="form-group">
+							<label for="notes" class="control-label col-md-3">Notes </label>
+							<div class="col-sm-9">
+								<textarea ng-model="user.notes" name="notes" id="notes"
+									class="form-control"></textarea>
+							</div>
+						</div>
+						<!-- BUTTONS -->
+						<div class="regdPageBtnPosition">
+							<input type="submit" class="btn newUserPageButtons btn-primary"
+								id="submit" name="submit" value="Register" /> <input
+								type="submit" ng-click="goToUserList()"
+								class="btn newUserPageButtons btn-danger" id="cancel"
+								name="cancel" value="Cancel" />
+						</div>
+					</form>
+					<!-- End of registration form -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>&#65279;<div class="container">
+
+	<div class="row panel panel-primary panel-heading" style="background: rgb(51, 122, 183)">
+		<div class="col-sm-2 edit">
+			<label class="user">User : Avinash Dongre</label> <a href="" ui-sref="" class="anchor"><span class="glyphicon glyphicon-edit"></span></a>
+		</div>
+		<div class="col-sm-8 ">
+			<div class="headingFont text-center ">Default Address</div>
+		</div>
+		<div class="col-sm-2" style="margin-top: 5px">
+			<a ng-click="backToUserList()" class="anchor">Back to user list</a>
+		</div>
+	</div>
+
+
+	<!-- DIVISION -->
+	<div class="col-md-4 subheading divname">
+		<p>Division : DME-EU</p>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2" style="background-color: #52afab">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+
+					<!-- ADDRESS FORM -->
+					<form name="defaultAddressForm" ng-submit="defaultAddressForm.$valid &amp;&amp; submitAddressForm(address)" class="form-horizontal" role="form" novalidate>
+
+						<!-- Customer -->
+						<div class="form-group">
+							<label for="divisions" class="control-label col-md-4">Customer
+								<em>*</em>
+							</label>
+							<div class="col-sm-8">
+								<select class="form-control" id="customer" name="customer" ng-model="address.customer" required><option value="">-- Select Customer --</option><option value="qwe">India</option><option value="us">US</option><option value="uk">UK</option><option value="uae">UAE</option></select><div ng-show="defaultAddressForm.$submitted">
+									<small class="error" ng-show="defaultAddressForm.customer.$error.required">
+										Customer is required </small>
+								</div>
+							</div>
+						</div>
+
+						<!-- Default Sales Org -->
+						<div class="form-group">
+							<label for="divisions" class="control-label col-md-4">Default
+								Sales Org <em>*</em>
+							</label>
+							<div class="col-sm-8">
+								<select class="form-control" id="sales_org" name="sales_org" ng-model="address.salesOrg" required><option value="">-- Select Sales Organization --</option><option value="qwe">India</option><option value="us">US</option><option value="uk">UK</option><option value="uae">UAE</option></select><div ng-show="defaultAddressForm.$submitted">
+									<small class="error" ng-show="defaultAddressForm.sales_org.$error.required">
+										Default sales organization is required </small>
+								</div>
+							</div>
+						</div>
+
+						<!-- Default Sales Channel -->
+						<div class="form-group">
+							<label for="divisions" class="control-label col-md-4">Default
+								Sales Channel <em>*</em>
+							</label>
+							<div class="col-sm-8">
+								<select class="form-control" id="sales_channel" name="sales_channel" ng-model="address.salesChannel" required><option value="">-- Select Sales Channel --</option><option value="qwe">India</option><option value="us">US</option><option value="uk">UK</option><option value="uae">UAE</option></select><div ng-show="defaultAddressForm.$submitted">
+									<small class="error" ng-show="defaultAddressForm.sales_channel.$error.required">
+										Sales channel is required </small>
+								</div>
+							</div>
+						</div>
+
+						<!-- Default Billing Address -->
+						<div class="form-group">
+							<label for="divisions" class="control-label col-md-4">Default
+								Billing Address <em>*</em>
+							</label>
+							<div class="col-sm-8">
+								<select class="form-control" id="billing_address" name="billing_address" ng-model="address.billingAddress" required><option value="">-- Select Billing Address --</option><option value="qwe">India</option><option value="us">US</option><option value="uk">UK</option><option value="uae">UAE</option></select><div ng-show="defaultAddressForm.$submitted">
+									<small class="error" ng-show="defaultAddressForm.billing_address.$error.required">
+										Billing address is required </small>
+								</div>
+							</div>
+						</div>
+
+						<!-- Default Shipping Address -->
+						<div class="form-group">
+							<label for="divisions" class="control-label col-md-4">Default
+								Shipping Address <em>*</em>
+							</label>
+							<div class="col-sm-8">
+								<select class="form-control" id="shipping_address" name="shipping_address" ng-model="address.shippingAddress" required><option value="">-- Select Shipping Address --</option><option value="qwe">India</option><option value="us">US</option><option value="uk">UK</option><option value="uae">UAE</option></select><div ng-show="defaultAddressForm.$submitted">
+									<small class="error" ng-show="defaultAddressForm.shipping_address.$error.required">
+										Shipping address is required </small>
+								</div>
+							</div>
+						</div>
+
+						<!-- BUTTONS -->
+						<div class="regdPageBtnPosition">
+							<input type="submit" class="btn newUserPageButtons btn-primary" id="submit" name="submit" value="Save"><input type="submit" class="btn newUserPageButtons btn-danger" id="cancel" name="cancel" value="Cancel"></div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body></html>

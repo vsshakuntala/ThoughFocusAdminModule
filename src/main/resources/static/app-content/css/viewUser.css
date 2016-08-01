@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+
+/* table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+thead{
+	background-color: #6699FF;
+} */
+
+select{
+	width:100%;
+	background-color:;
+}
+
+div.divisionDiv{
+	background-color: ;height: 100px;overflow: scroll;overflow-x:hidden;
+}
+
+div.filterDiv{
+	margin-top: 10px;
+}
+
+.ifApproved{
+	background-color: rgb(58, 167, 58);
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+.ifPending{
+	background-color: #F49507;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 5px;
+}
+
+.ifDeleted{
+	background-color: red;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    border-radius: 5px;
+}

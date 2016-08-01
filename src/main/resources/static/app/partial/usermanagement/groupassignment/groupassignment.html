@@ -1,0 +1,83 @@
+<div class="container-fluid">
+	<div class="panel panel-primary" style="margin-top: 10px;">
+		<div class="panel-heading panel-primary">
+			<div class="row ">
+				<div class="col-sm-2 edit">
+					<label  ng class="user" style="color: white;">User : <a ng-click="backToDivision()" style="color: white;">Avinash Dongre</a></label> <a href=""
+						ui-sref="usermgmt.user.updateuser" class="anchor"><span
+						class="glyphicon glyphicon-edit"></span></a>
+				</div>
+				<div class="col-sm-8 ">
+					<div class="headingFont text-center ">Group</div>
+				</div>
+				<div class="col-sm-2 text-right" style="margin-top: 5px"
+					>
+					<a ng-click="backToUserList()" class="anchor">Back to user list</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12" style="margin-left: 10px;">
+			<label><b>Division:</b></label>
+			<p>DME-EU</p>
+		</div>
+	</div>
+	<div class="conatainer">
+		<div class="row" id="rowPrimary" style="margin-top: 60px;">
+			<div class=" col-sm-offset-3 col-sm-9">
+				<div id="panelMain" class="panel panel-primary">
+					<div id="division""></div>
+					<div class="panel panel-body">
+						<div class="row" id="rowSecondary">
+							<div class="col-md-3" style="margin-top: -117px;">
+								<label id="unAssignedRolesLabel">Unassigned Group</label> <select
+									id="unassignedRolesBox" multiple ng-model="available" size="7"
+									ng-options="client as client.name for client in availableclients"></select>
+							</div>
+							<div class="col-md-6">
+								<div class="row text-center" style="margin-top: 120px;">
+									<div class="col-sm-12">
+										<input class="btn btnarrow btn-primary" title="AddS"
+											type="button" value=">"
+											ng-click="moveItem(available[0], availableclients,selectedclients)" />
+										<input class="btn btnarrow btn-primary" title="Add All"
+											type="button" value=">>"
+											ng-click="moveAll(availableclients,selectedclients)" /> <br>
+										<input class="btn btnarrow btn-primary" title="Remove"
+											type="button" style="margin-top: 3px;" value="<"
+											ng-click="moveItem(selected[0], selectedclients,availableclients)" />
+										<input class="btn btnarrow btn-primary" title="Remove All"
+											type="button" style="margin-top: 3px;" value="<<"
+											ng-click="moveAll(selectedclients,availableclients)" />
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3" style="margin-top: -120px;">
+								<label id="assignedRolesLabel">Assigned Group</label> <select
+									id="assignedRolesBox" multiple ng-model="selected"
+									ng-options="client as client.name for client in selectedclients"
+									size="7"></select>
+							</div>
+
+						</div>
+
+						<div class="row" id="rowTertiary">
+							<div class="col-md-6">
+								<input type="submit" id="saveButton" class="btn btn-primary"
+									title="save" value="Save" />
+							</div>
+							<div class="col-md-6">
+								<input type="reset" id="cancelButton" class="btn btn-danger"
+									title="cancel" value="Cancel"
+									style="margin-top: 50px; width: 100px; margin-left: 14px;" />
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

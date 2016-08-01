@@ -1,0 +1,144 @@
+<div class="container-fluid">
+	<div class="panel panel-primary"  style="margin-top: 10px;">
+		<div class="panel-heading panel-primary">
+			<div class="row ">
+				<div class="col-sm-offset-2 col-sm-8 ">
+					<div class="headingFont text-center ">List Of Users</div>
+				</div>
+				<div class="col-sm-2 text-right" style="margin-top: 5px"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row text-right" style="margin-top: 5px;">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-6">
+					<input class="btn btn1 btn-primary btn-space btn-md" type="button"
+						value="Results: 15"> <input
+						class="btn btn1 btn-primary btn-space btn-md" type="button"
+						value="Download Results"> <a href="" ng-click="toggle()"
+						style="font-size: 24px; margin: 0px 5px;"> <span
+						class="fa fa-filter"></span></a> <i ng-click="create()"
+						class="fa fa-user-plus" style="font-size: 24px;"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10 ">
+			<div class="row filterDiv searchForm" style="padding: 3px;"
+				ng-show="isVisible">
+				<div class="col-sm-2">
+					<div class="row">
+						<div class="col-sm-12">
+							<label>Divisions</label>
+						</div>
+					</div>
+					<div class="row divisionDiv">
+						<div class="col-sm-12">
+							<p ng-repeat='divs in divisions' style="">
+								<label> <input type="checkbox" ng-init="checked=true"
+									ng-model="divs.divss" ng-click="getdiv(divs)" value="divs">
+									{{divs.name}}
+								</label>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<label>Status</label>
+					<p ng-repeat='status in status'>
+						<label> <input type="checkbox" ng-model="status.status"
+							ng-click="getstatus(status)" value="status" checked>
+							{{status.name}}
+						</label>
+					</p>
+				</div>
+				<div class="col-sm-2">
+					<label>Roles</label>
+					<p ng-repeat='role in roles'>
+						<label> <input type="checkbox" ng-model="role.role"
+							ng-click="getroles(role)" value="role"> {{role.name}}
+						</label>
+					</p>
+				</div>
+				<div class="col-sm-2">
+					<div>
+						<label>Registered From</label> <input type="date">
+					</div>
+					<div>
+						<label>Company</label><br> <input type="text"
+							style="width: 150px;"><br>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<div>
+						<label>Registered To</label> <input type="date">
+					</div>
+					<div>
+						<label>Name</label> <br> <input type="Text"
+							style="width: 150px;">
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<button class="btn-center" type="button" style="margin-top: 20px;">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 10px;"></div>
+			<div class="container-fluid">
+				<div class="row" style="margin-top: 10px">
+					<div class="col-sm-12">
+						<table datatable="ng" dt-options="dtOptions" id="dataTable"
+							class="row-border hover" cellspacing="0" width="100%">
+							<thead style="text-align: center">
+								<tr>
+									<th style="text-align: center">User Name</th>
+									<th style="text-align: center">First name</th>
+									<th style="text-align: center">Last name</th>
+									<th style="text-align: center">Email</th>
+									<th style="text-align: center">Registered Date</th>
+									<th style="text-align: center">Phone</th>
+									<th style="text-align: center">Company Name</th>
+									<th style="text-align: center">Status</th>
+									<th style="text-align: center">Approved/ Pending</th>
+									<th style="text-align: center">Action</th>
+								</tr>
+							</thead>
+							<tbody style="text-align: center">
+								<tr ng-repeat="user in userList">
+									<td>{{user.userName}}</td>
+									<td href="#" ui-sref="usermgmt.divisionassignment">{{user.firstName}}</td>
+									<td>{{user.lastName}}</td>
+									<td>{{user.email}}</td>
+									<td>{{user.registeredDate}}</td>
+									<td>{{user.mobile}}</td>
+									<td>{{user.comapny}}</td>
+									<td>
+										<div ng-if="checkApprovedStatus(user)">
+											<div class="ifApproved">{{user.status}}</div>
+										</div>
+										<div ng-if="checkPendingStatus(user)">
+											<div class="ifPending">{{user.status}}</div>
+										</div>
+										<div ng-if="checkDeletedStatus(user)">
+											<div class="ifDeleted">{{user.status}}</div>
+										</div>
+									</td>
+									<td>{{user.approvedCount}} / {{user.pendingCount}}</td>
+									<td>
+										<button ng-if="checkIsDeleted(user)" type="button"
+											class="btn btn-success">
+											<i class="fa fa-check"></i>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

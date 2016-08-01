@@ -1,0 +1,103 @@
+<!-- Header Starts -->
+<header>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="row">
+				<div id="loginHeader" class="navbar-header col-sm-10">
+					<img id="companyLogo" alt="ThoughtFocus"
+						src="app-content/img/tf.png">
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+<!-- Header Ends -->
+<!-- Body Starts -->
+<div class="container-fluid">
+	<div class="row" id="rowLogoBox">
+		<!-- <div class="col-md-4"></div> -->
+		<div class=" col-md-offset-4 col-md-4">
+			<div class="login-box ">
+				<div class="login-logo">
+					<a><b>Thought</b>Focus</a>
+				</div>
+				<!-- /.login-logo-heading -->
+				<div class="login-box-body">
+					<p class="login-box-msg">Sign in to start your session</p>
+					<form class="form-group has-feedback" name="loginForm" role="form"
+						ng-submit="loginForm.$valid && onLogin(user)" method="post"
+						novalidate>
+						<div class="form-group  ">
+							<input type="email" class="form-control" name="userid"
+								ng-model="user.email" placeholder="Enter the email" id="email"
+								required> <span
+								class=" form-control-feedback  has-error"></span>
+							<div ng-show="loginForm.$submitted">
+								<small class="error" ng-show="loginForm.userid.$error.required">{{APPCONSTANTS.COMMONMESSAGE.EMAIL_MANDATORY}} </small> <small class="error"
+									ng-show="loginForm.userid.$error.email">Enter a valid
+									email. </small>
+							</div>
+						</div>
+						<div class="form-group ">
+							<!-- Start of password field -->
+							<!-- show password as type="password" -->
+							<div ng-if="!showPassword" class="form-group has-feedback">
+								<input type="password" ng-model="user.password"
+									class="form-control" placeholder="Enter the password"
+									class="form-control" name="password" ng-model="user.password"
+									placeholder="Enter the password" id="pwd" required> <span
+									ng-if="user.password" ng-click="toggleShowPassword()"
+									class="fa fa-eye form-control-feedback"
+									style="cursor: pointer; pointer-events: all;"> </span>
+								<div ng-show="loginForm.$submitted">
+									<small class="error"
+										ng-show="loginForm.password.$error.required">Password
+										is required </small>
+								</div>
+							</div>
+							<!-- show password as type="text" -->
+							<div ng-if="showPassword" class="form-group has-feedback">
+								<input type="text" ng-model="user.password" class="form-control"
+									placeholder="Password" class="form-control" name="password"
+									ng-model="user.password" placeholder="Enter the password"
+									id="pwd" required> <span ng-if="user.password"
+									ng-click="toggleShowPassword()"
+									class="fa fa-eye-slash form-control-feedback"
+									style="cursor: pointer; pointer-events: all;"> </span>
+							</div>
+							<!-- End of password field -->
+						</div>
+						<div class="row">
+							<!-- Submit button starts -->
+							<div class="col-xs-12">
+								<button ng-click="onLogin(user)" type="submit"
+									class="btn btn-primary btn-block btn-flat">Sign In</button>
+							</div>
+							<!-- Submit button starts -->
+						</div>
+					</form>
+				</div>
+				<!-- /.login-box-body -->
+			</div>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+</div>
+<!-- /.login-box -->
+<!-- Body Ends -->
+<!-- Footer Starts -->
+<footer id="loginFooter"
+	class="navbar  navbar-fixed-bottom">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="pull-left">
+					<strong>Copyright &copy; 2016 <a href="">ThoughtFocus</a>.
+					</strong> All rights reserved.
+				</div>
+				<div class="pull-right">Version 1.0.0.0</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Footer Ends -->

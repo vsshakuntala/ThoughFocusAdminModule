@@ -1,0 +1,258 @@
+
+	<div class="container-fluid">
+
+		<div class="panel panel-primary" style="margin-top: 10px;">
+		<div class="panel-heading panel-primary">
+			<div class="row ">
+				<div class="col-sm-2 edit">
+					<label class="user">User : Avinash Dongre</label> <a href=""
+						ui-sref="usermgmt.user.updateuser" class="anchor"><span
+						class="glyphicon glyphicon-edit"></span></a>
+				</div>
+				<div class="col-sm-8 ">
+					<div class="headingFont text-center ">Division</div>
+				</div>
+				<div class="col-sm-2 text-right" style="margin-top: 5px"
+					>
+					<a ng-click="backToUserList()" class="anchor">Back to user list</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+
+
+				<div class="row margin-bottom-10">
+
+					<div class="col-sm-12">
+
+						<div class="pull-right margin-left-10">
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#viewNotesModel">
+							<i class="fa fa-sticky-note"></i>
+							</button>
+						</div>									
+					</div>
+
+				</div>
+
+
+
+				<div class="row margin-bottom-10">
+					<div
+						class="col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-md-10 col-sm-10 col-lg-10 text-center">
+
+
+						<div class="row">
+							<div class="col-lg-4  col-md-4 col-sm-4">
+								<div class="small-box bg-aqua-custom">
+									<div class="inner">
+										<h3>Assigned Divisions</h3>
+										<hr class="custom_hr_margin">
+										<p class="bodyPannelPara">5</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-4 col-md-4 col-sm-4">
+								<div class="small-box bg-aqua-custom">
+									<div class="inner">
+										<h3>Registered Date</h3>
+										<hr class="custom_hr_margin">
+										<p class="bodyPannelPara">5 June 2016</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-4  col-md-4 col-sm-4">
+								<div class="small-box bg-aqua-custom">
+									<div class="inner">
+										<h3>Last Active Date</h3>
+										<hr class="custom_hr_margin">
+										<p class="bodyPannelPara">8 June 2016 12:35 PM</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="row margin-bottom-10">
+					<div class="col-xs-12">
+						<div id="no-more-tables">
+							<table class="table table-hover" cellspacing="0" width="100%"
+								datatable="ng" dt-options="dtOptions" id="dataTable">
+								<thead>
+									<tr>
+										<th style="text-align: center;" class="numeric">Division</th>
+										<th style="text-align: center;">Status</th>
+										<th style="text-align: center;">Role</th>
+										<th style="text-align: center;">Customer</th>
+										<th style="text-align: center;">Default Address</th>
+										<th style="text-align: center;">Machines</th>
+										<th style="text-align: center;">Groups</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="division in divisionList">
+										<td style="text-align: center;">{{division.organizationName}}</td>
+
+
+	<td style="text-align: center;">
+	<div ng-if="checkDivisionStatus(division)">
+		<div class="label-approved"> {{division.status}} </div> 
+	</div>
+	<div ng-if="!checkDivisionStatus(division)" >
+		<div class="label-pending"> {{division.status}} </div>
+	</div>
+	
+	</td>
+										
+	<td style="text-align: center;" ng-if="!checkRoleResults(division)" class="clickable" ng-click="navigateToRoles()">Assign</td>
+	<td style="text-align: center;" ng-if="checkRoleResults(division)" class="clickable" ng-click="navigateToRoles()">Modify <span class="badge">{{division.Role}}</span></td>
+
+
+										<td style="text-align: center;"
+											ng-if="!checkCustomerResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToCustomers()">Assign</td>
+										<td style="text-align: center;" style="text-align: center;"
+											ng-if="checkCustomerResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToCustomers()">Modify <span
+											class="badge">{{division.customerCount+division.customerGroupCount}}</span></td>
+
+
+										<td style="text-align: center;"
+											ng-if="!checkDefaultAddressResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToDefaultAddress()">Assign</td>
+										<td style="text-align: center;"
+											ng-if="checkDefaultAddressResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToDefaultAddress()">Modify <span
+											class="badge">{{division.defaultAddressCount}}</span></td>
+
+										<td style="text-align: center;"
+											ng-if="!checkMachinesResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToMachines()">Assign</td>
+										<td style="text-align: center;"
+											ng-if="checkMachinesResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToMachines()">Modify <span
+											class="badge">{{division.catalogCount+division.catalogGroupCount}}</span>
+										</td>
+
+
+										<td style="text-align: center;"
+											ng-if="!checkGroupResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToGroups()">Assign</td>
+										<td style="text-align: center;"
+											ng-if="checkGroupResults(division)"
+											class="bodyPannelPara clickable"
+											ng-click="navigateToGroups()">Modify <span class="badge">{{division.groupsCount}}</span>
+										</td>
+
+										<td>
+											<button type="button" class="btn btn-success"
+												ng-if="checkApproveDivisionUI(division)">
+												<i class="fa fa-check"></i>
+											</button>
+											<button type="button" class="btn btn-danger"
+												ng-if="checkRemoveDivisionUI(division)">
+												<i class="fa fa-times"></i>
+											</button>
+											
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<!--add notes Modal -->
+			<div class="modal" id="addNotesModel" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+							<h4 class="modal-title">Add Notes</h4>
+						</div>
+						<div class="modal-body">
+							<form name="notesForm" role="form"
+								ng-submit="submitNoteOfUser(userNote)">
+								<div class="form-group">
+									<textarea class="form-control" id="inputNote" rows="3"
+										ng-model="userNote.note"></textarea>
+								</div>
+
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Submit</button>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--view notes modal  -->
+	<div class="modal" id="viewNotesModel" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Notes</h4>
+				</div>
+				<div class="modal-body">
+					<form name="notesForm" role="form"
+								ng-submit="submitNoteOfUser(userNote)">
+								<div class="form-group">
+									<textarea class="form-control" id="inputNote" rows="3"
+										ng-model="userNote.note"></textarea>
+								</div>
+
+							</form>
+				
+					<div class="row text-center">
+					<h3>History</h3>
+					</div>			
+					
+					
+						<div ng-repeat="note in notes">
+							<li>{{note.date}}:{{note.note}}</li>
+							<hr>
+						</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Send</button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+

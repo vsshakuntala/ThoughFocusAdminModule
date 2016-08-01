@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+.heading{
+	font-size: 23px;
+	color: white;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+.edit{
+	font-size: 17px;
+	color: #333;
+	font-family: sans-serif;
+}
+.subheading{
+	font-size: 18px;
+	text-align: center;
+}
+#ddlsearch{
+    width: 179px;
+    border-radius: 0px;
+    background-color: rgb(51, 122, 183);
+    color: white;
+    font-size: 18px;
+    padding-top: 5px;
+}
+#txtkey, #btn-search{
+border-radius: 0px;
+}
+.ddl-title{
+  background-color:#5bc0de !important;
+  color:#fff !important;
+  font-style:italic;
+  font-size:80%;
+}
+
+/* .ddl-select.input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+} */
+
+/* .divname{
+	background-color:rgb(128,128,128);
+}
+.availablecount{
+	background-color: rgb(200,200,200);
+}
+.assignedcount{
+	background-color: rgb(90,90,90); 
+}*/

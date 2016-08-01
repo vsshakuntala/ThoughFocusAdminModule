@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+
+#customer, #sales_org, #sales_channel, #billing_address, #shipping_address{
+	border-radius: 0px;
+	/* -webkit-appearance: none; */
+}

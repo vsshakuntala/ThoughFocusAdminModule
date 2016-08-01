@@ -1,0 +1,178 @@
+<div class="container-fluid">
+	<div class="panel panel-primary" style="margin-top: 10px;">
+		<div class="panel-heading panel-primary">
+			<div class="row">
+				<div class="col-sm-2 edit">
+					<label ng class="user" style="color: white;">User : <a
+						ng-click="backToDivision()" style="color: white;">Avinash
+							Dongre</a></label> <a href="" ui-sref="usermgmt.divisionassignment"
+						class="anchor"><span class="glyphicon glyphicon-edit"></span></a>
+				</div>
+				<div class="col-sm-8 ">
+					<div class="headingFont text-center ">Machine Management</div>
+				</div>
+				<div class="col-sm-2 text-right" style="margin-top: 5px">
+					<a ng-click="backToUserList()" class="anchor">Back to user list</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-0 col-md-10 ">
+			<div class="row">
+				<div class="col-sm-offset-1  col-sm-12 ">
+					<div id="infoRow" class="row" style="margin-left: 80px;">
+						<div class="col-sm-4">
+							<div class="small-box bg-aqua-custom">
+								<div class="inner">
+									<h3>Assigned Divisions</h3>
+									<hr class="custom_hr_margin">
+									<p class="bodyPannelPara">5</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="small-box bg-aqua-custom">
+								<div class="inner">
+									<h3>Available</h3>
+									<hr class="custom_hr_margin">
+									<p class="bodyPannelPara">1000</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="small-box bg-aqua-custom">
+								<div class="inner">
+									<h3>Assigned</h3>
+									<hr class="custom_hr_margin">
+									<p class="bodyPannelPara">234</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-2 col-md-10 "
+			style="margin-left: 10px; margin-top: 10px;">
+			<div class="container" style="margin-left: 364px;">
+				<div class="form-group">
+					<div class="col-sm-2">
+						<input class="btn btn-primary largebtn" type="button"
+							value="Assign All" />
+					</div>
+					<div class="col-sm-2">
+						<input class="btn btn-primary largebtn" type="button"
+							value="Remove All" />
+					</div>
+					<div class="col-sm-2">
+						<input class="btn btn-primary largebtn" type="button"
+							value="Assign" />
+					</div>
+					<div class="col-sm-2">
+						<input class="btn btn-primary largebtn" type="button"
+							value="Remove" />
+					</div>
+					<div class="col-sm-2">
+						<input class="btn btn-primary largebtn " type="button"
+							value=" Download" />
+					</div>
+					<div class="col-sm-2">
+						<input class="btn btn-primary largebtn" type="button"
+							value="Filter" ng-click="toggle()" />
+					</div>
+				</div>
+			</div>
+			<div class="searchFormMachines" ng-show="isVisible">
+				<form action="#" role="form">
+					<!-- <div class="container"> -->
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label>Serial #</label> <input type="text" class="form-control"
+									id="cust_name">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label>Model</label> <input type="text" class="form-control"
+									id="cust_no">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label>Machine Ref</label> <input type="text"
+									class="form-control" id="bill_to">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label>Customer Name</label> <input type="text"
+									class="form-control" id="add1">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label>Group</label> <input type="text" class="form-control"
+									id="add1">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<label>Status</label> <select class="form-control"
+									id="searchKey">
+									<option value="">--Select--</option>
+									<option value="all">All</option>
+									<option value="assigned">Assigned</option>
+									<option value="notassigned">Not Assigned</option>
+								</select>
+							</div>
+						</div>
+
+					</div>
+					<div class="btnPosition">
+						<button type="button" style="margin-bottom: 3px;">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="no-more-tables">
+				<table class="table table-hover" cellspacing="0" width="100%"
+					datatable="ng" dt-options="dtOptions" id="dataTable">
+					<thead>
+						<tr>
+							<th style="text-align: center;">Select</th>
+							<th style="text-align: center;">Serial #</th>
+							<th style="text-align: center;">Model</th>
+							<th style="text-align: center;">Machine Ref</th>
+							<th style="text-align: center;">Customer Name</th>
+							<th style="text-align: center;">Status</th>
+							<th style="text-align: center;">Group</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="division in divisionList">
+							<td style="text-align: center;"><input type="checkbox" /></td>
+							<td style="text-align: center;">{{ division.serial}}</td>
+							<td style="text-align: center;">{{division.model }}</td>
+							<td style="text-align: center;">{{
+								division.machineReference}}</td>
+							<td style="text-align: center;">{{ division.customerName }}</td>
+							<td style="text-align: center;">{{division.status}}</td>
+							<td style="text-align: center;">{{division.group}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

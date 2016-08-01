@@ -1,0 +1,337 @@
+<div class="container-fluid">
+	<div class="panel panel-primary" style="margin-top: 10px;">
+		<div class="panel-heading panel-primary">
+			<div class="row">
+				<div class="col-sm-2 edit">
+					<label ng class="user" style="color: white;">User : <a
+						ng-click="backToDivision()" style="color: white;">Avinash
+							Dongre</a></label> <a href="" ui-sref="usermgmt.divisionassignment"
+						class="anchor"><span class="glyphicon glyphicon-edit"></span></a>
+				</div>
+				<div class="col-sm-8 ">
+					<div class="headingFont text-center ">Customer</div>
+				</div>
+				<div class="col-sm-2 text-right" style="margin-top: 5px">
+					<a ng-click="backToUserList()" class="anchor">Back to user list</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-lg-2  col-md-2 col-sm-2"></div>
+		<div class="col-lg-1  col-md-1 col-sm-1"></div>
+		<div class="col-lg-2  col-md-2 col-sm-2">
+			<div class="small-box bg-aqua-custom">
+				<div class="inner">
+					<h3>Division</h3>
+					<hr class="custom_hr_margin">
+					<p class="bodyPannelPara">DME-EU</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-2  col-md-2 col-sm-2">
+			<div class="small-box bg-aqua-custom">
+				<div class="inner">
+					<h3>Available</h3>
+					<hr class="custom_hr_margin">
+					<p class="bodyPannelPara">14</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-2  col-md-2 col-sm-2">
+			<div class="small-box bg-aqua-custom">
+				<div class="inner">
+					<h3>Assigned</h3>
+					<hr class="custom_hr_margin">
+					<p class="bodyPannelPara">4</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3  col-md-3 col-sm-3">
+			<button ng-click="toggle()" style="float: right;">
+				<span class="glyphicon glyphicon-filter"></span>
+			</button>
+		</div>
+	</div>
+	<div class="row col-lg-offset-0 col-sm-12">
+
+		<div class="col-md-12">
+
+			<div class="searchForm" ng-show="isVisible"
+				style="margin-top: 5px; width: 100%;">
+
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>Customer Name</label> <input type="text" name="name"
+							ng-model="customer.customername" class="form-control"
+							id="cust_name">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>Customer #</label> <input type="text" class="form-control"
+							ng-model="customer.customernum" id="cust_no">
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>Bill To #</label> <input type="text" class="form-control"
+							ng-model="customer.billtonum" id="bill_to">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>Address 1</label> <input type="text" class="form-control"
+							ng-model="customer.addressone" id="add1">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>City</label> <input type="text" class="form-control"
+							ng-model="customer.city" id="city">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>State</label> <input type="text" class="form-control"
+							ng-model="customer.state" id="state">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>Postal</label> <input type="text" class="form-control"
+							ng-model="customer.postal" id="postal">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label>Status</label> <select class="form-control" id="searchKey"
+							ng-model="customer.status">
+							<option value="">--Select--</option>
+							<option value="all">All</option>
+							<option value="assigned">Assigned</option>
+							<option value="notassigned">Not Assigned</option>
+						</select>
+					</div>
+				</div>
+				<div class="btnPosition">
+					<button style="margin-bottom: 3px;"
+						ng-click="searchByParams(customer)">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+
+				</div>
+			</div>
+			<div class="row text-center" style="margin-top: 5px;">
+				<input class="btn btn1 btn-primary btn-space btn-md" type="button"
+					value="Assign All" ng-click="assignall()"> <input
+					class="btn btn1 btn-primary btn-space btn-md" type="button"
+					value="Remove All" ng-click="removeall()"> <input
+					class="btn btn1 btn-primary btn-space btn-md" type="button"
+					value="Assign" ng-click="assign()"> <input
+					class="btn btn1 btn-primary btn-space btn-md" type="button"
+					value="Remove" ng-click="remove()"> <input
+					class="btn btn1 btn-primary btn-space btn-md" type="button"
+					value="Results: 7500">
+				<button class="btn btn-primary" title="Download Results"
+					ng-click="downloadresult()">
+					<span class="glyphicon glyphicon-download"></span>
+				</button>
+			</div>
+
+			<div ng-controller="CustomerAssignmentController as showCase">
+				<div class="row" style="margin-top: 10px">
+					<table datatable="" class="row-border hover">
+						<thead>
+							<tr>
+								<th>Select</th>
+								<th>Customer #</th>
+								<th>Name</th>
+								<th>Address1</th>
+								<th>City</th>
+								<th>State</th>
+								<th>Postal Code</th>
+								<th>Country</th>
+								<th>Status</th>
+								<th>Group</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>1</td>
+								<td>Santosh</td>
+								<td>Patel Nagar</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td>Assigned</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>2</td>
+								<td>Khyati</td>
+								<td>Patel Nagar</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td>Assigned</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>3</td>
+								<td>Alex</td>
+								<td>Patel Nagar</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td>Assigned</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>4</td>
+								<td>virat</td>
+								<td>Patel Nagar</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td>Assigned</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>5</td>
+								<td>Amol</td>
+								<td>singh</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>6</td>
+								<td>Ruchi</td>
+								<td>upadya</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>7</td>
+								<td>Aryan</td>
+								<td>bhat</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>8</td>
+								<td>Manohar</td>
+								<td>JAdhav</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>9</td>
+								<td>Aksh</td>
+								<td>Raman</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" onclick="return false" /></td>
+								<td>10</td>
+								<td>Jeevan</td>
+								<td>Rayan</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td>Driver</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>11</td>
+								<td>Radha</td>
+								<td>Krishn</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>12</td>
+								<td>Murali</td>
+								<td>Gupta</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>13</td>
+								<td>John</td>
+								<td>Sebastian</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" /></td>
+								<td>14</td>
+								<td>John</td>
+								<td>Sebastian</td>
+								<td>Bangalore</td>
+								<td>Karnataka</td>
+								<td>9087654</td>
+								<td>India</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
